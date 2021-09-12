@@ -1,0 +1,22 @@
+{
+  "name": "ch05",
+  "version": "1.0.0",
+  "description": "Jest Test Website",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "Test",
+    "Website"
+  ],
+  "author": "Hyung Won Lee",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3"
+  },
+  "devDependencies": {
+    "jest": "^27.1.1"
+  }
+}
