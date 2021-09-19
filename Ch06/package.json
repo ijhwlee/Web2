@@ -1,0 +1,20 @@
+{
+  "name": "ch06",
+  "version": "1.0.0",
+  "description": "sites for chaper 6",
+  "main": "showheader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "header",
+    "express"
+  ],
+  "author": "Hyung Won Lee",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3"
+  }
+}
