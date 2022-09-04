@@ -11,7 +11,7 @@ const fortunes = [
 ]
 
 //핸들바 뷰 엔진 설정
-app.engine('handlebars', expresshandlebars({
+app.engine('handlebars', expresshandlebars.engine({
     defaultLayout: 'main',
 }))
 app.set('view engine', 'handlebars')
