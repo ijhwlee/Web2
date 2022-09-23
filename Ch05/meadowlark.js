@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000
 const handlers = require('./lib/handlers')
 
 //핸들바 뷰 엔진 설정
-app.engine('handlebars', expresshandlebars({
+app.engine('handlebars', expresshandlebars.engine({
     defaultLayout: 'main',
 }))
 app.set('view engine', 'handlebars')
