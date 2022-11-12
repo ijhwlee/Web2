@@ -7,7 +7,7 @@ app.use((req, res, next) => {
 })
 
 app.get('/a', (req, res) => { 
-	console.log('/a: route terminated')
+	console.log('/a: route terminated modified from vs2022')
 	res.send('a')
 })
 app.get('/a', (req, res) => { 
