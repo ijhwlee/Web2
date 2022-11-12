@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 app.use((req, res, next) => {
-    console.log(`processing request for ${req.url}...`)
+    console.log(`processing request for ${req.url} from home ...`)
     next()
 })
 app.use((req, res, next) => {
