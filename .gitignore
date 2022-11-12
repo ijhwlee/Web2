@@ -129,5 +129,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-#vs directories
+#vs2022 directories
 .vs/
+obj/
+x64/
