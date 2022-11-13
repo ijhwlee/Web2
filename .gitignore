@@ -133,3 +133,4 @@ dist
 .vs/
 obj/
 x64/
+credentials.js
