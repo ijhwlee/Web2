@@ -11,7 +11,7 @@ module.exports = {
     },
     sendgrid2: {
       user: 'MyMailAPI',
-      api_key: 'Zj9sk5Y_Qwihj0W_GwW84A',
+      api_key: '2yumlx6fQy2-_1MabyQvzQ',
       password: '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',
     },
   }
