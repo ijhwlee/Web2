@@ -6,7 +6,7 @@ module.exports = {
     // },
     sendgrid: {
       user: 'web2',
-      api_key: 'AfyfnOdNSGWOaEbrcndbXw',
-      password: 'SG.AfyfnOdNSGWOaEbrcndbXw.F7CPgVtN55hfD4TDaWSG3FdpWFHPL9wMyY4cndX0tg8Copied!',
+      api_key: '========================',
+      password: '==============================================',
     },
   }
