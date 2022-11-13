@@ -6,12 +6,7 @@ module.exports = {
     // },
     sendgrid: {
       user: 'web2',
-      api_key: 'Zj9sk5Y_Qwihj0W_GwW84A',
-      password: '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',
-    },
-    sendgrid2: {
-      user: 'MyMailAPI',
-      api_key: '2yumlx6fQy2-_1MabyQvzQ',
-      password: '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',
+      api_key: 'AfyfnOdNSGWOaEbrcndbXw',
+      password: 'SG.AfyfnOdNSGWOaEbrcndbXw.F7CPgVtN55hfD4TDaWSG3FdpWFHPL9wMyY4cndX0tg8Copied!',
     },
   }
