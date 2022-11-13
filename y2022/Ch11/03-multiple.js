@@ -14,10 +14,10 @@ async function go() {
   try {
     const result = await mailTransport.sendMail({
       from: '"Meadowlark Travel" <ijhwlee@daum.net>',
-      to: 'ijhwlee@daum.net',
-      subject: 'Your Meadowlark Travel Tour',
+      to: 'ijhwlee@daum.net, ijhwlee@gmail.com',
+      subject: 'Your Meadowlark Travel Tour Multiple user',
       text: 'Thank you for booking your trip with Meadowlark Travel.  ' +
-        'We look forward to your visit!',
+        'We look forward to your visit! Multiple user',
     })
     console.log('mail sent successfully: ', result)
   } catch(err) {
