@@ -6,12 +6,12 @@ module.exports = {
     // },
     sendgrid: {
       user: 'web2',
-      api_key: 'Zj9sk5Y_Qwihj0W_GwW84A',
+      api_key: '==============',
       password: '============================================================',
     },
     sendgrid2: {
       user: 'MyMailAPI',
-      api_key: 'Zj9sk5Y_Qwihj0W_GwW84A',
+      api_key: '==============',
       password: '============================================================',
     },
   }
