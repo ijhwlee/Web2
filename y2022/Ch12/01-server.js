@@ -1,7 +1,13 @@
 const express = require('express')
+const expressHandlebars = require('express-handlebars')
 const cluster = require('cluster')
 
 const app = express()
+
+app.engine('handlebars', expressHandlebars.engine({
+    defaultLayout: 'main',
+  }))
+app.set('view engine', 'handlebars')
 
 app.use((req, res, next) => {
   if(cluster.isWorker)
@@ -21,6 +27,11 @@ app.get('/epic-fail', (req, res) => {
 })
 
 app.get('*', (req, res) => res.send('online'))
+
+app.use((err, req, res, next) => {
+    console.error(err.message, err.stack)
+    res.render('500')
+})
 
 process.on('uncaughtException', err => {
   console.error('UNCAUGHT EXCEPTION\n', err.stack);
