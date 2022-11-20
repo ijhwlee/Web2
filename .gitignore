@@ -134,3 +134,4 @@ dist
 obj/
 x64/
 credentials.js
+.credentials.*
