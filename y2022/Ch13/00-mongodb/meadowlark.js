@@ -34,9 +34,9 @@ app.use(express.json())
 const redis = require("redis"); 
 
 const client = redis.createClient({
-  host: 'redis-14793.c292.ap-southeast-1-1.ec2.cloud.redislabs.com',
-  port: 14793,
-  password: 'VF0EdTVqsts27v4Kt915QjWZKf8Rmycz',
+  host: credentials.redis[app.get('env')].host,
+  port: credentials.redis[app.get('env')].port,
+  password: credentials.redis[app.get('env')].password,
   logErrors: true,
 });
 
