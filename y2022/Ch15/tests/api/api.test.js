@@ -1,4 +1,5 @@
 const fetch = require('node-fetch')
+//const fetch = import('node-fetch')
 
 const baseUrl = 'http://localhost:3000'
 
