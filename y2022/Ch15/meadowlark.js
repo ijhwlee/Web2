@@ -1,10 +1,10 @@
 const express = require('express')
 const expressHandlebars = require('express-handlebars')
-const bodyParser = require('body-parser')
 const multiparty = require('multiparty')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const RedisStore = require('connect-redis')(expressSession)
+const redis = require('redis')
 const cors = require('cors')
 
 const handlers = require('./lib/handlers')
@@ -19,7 +19,7 @@ const app = express()
 app.use('/api', cors())
 
 // configure Handlebars view engine
-app.engine('handlebars', expressHandlebars({
+app.engine('handlebars', expressHandlebars.engine({
   defaultLayout: 'main',
   helpers: {
     section: function(name, options) {
@@ -31,17 +31,25 @@ app.engine('handlebars', expressHandlebars({
 }))
 app.set('view engine', 'handlebars')
 
-app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
 
 app.use(cookieParser(credentials.cookieSecret))
+const client = redis.createClient({
+  host: credentials.redis[app.get('env')].host,
+  port: credentials.redis[app.get('env')].port,
+  password: credentials.redis[app.get('env')].password,
+  logErrors: true,
+});
 app.use(expressSession({
   resave: false,
   saveUninitialized: false,
   secret: credentials.cookieSecret,
-  store: new RedisStore({
-    url: credentials.redis[app.get('env')].url,
-  }),
+  cookie: {
+    httpOnly: true,
+    secure: false,
+  },
+  store: new RedisStore({client}),
 }))
 
 const port = process.env.PORT || 3000
