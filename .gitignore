@@ -135,3 +135,4 @@ obj/
 x64/
 credentials.js
 .credentials.*
+credentials.*.js
