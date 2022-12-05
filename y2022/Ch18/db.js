@@ -72,6 +72,7 @@ Vacation.find((err, vacations) => {
 
 const VacationInSeasonListener = require('./models/vacationInSeasonListener')
 const Attraction = require('./models/attraction')
+const User = require('./models/user')
 
 module.exports = {
   getVacations: async (options = {}) => Vacation.find(options),
@@ -85,4 +86,7 @@ module.exports = {
   },
   getAttractions: async (options = {}) => Attraction.find(options),
   addAttraction: async attraction => new Attraction(attraction).save(),
+  getUserById: async id => User.findById(id),
+  getUserByAuthId: async authId => User.findOne({ authId}),
+  addUser: async data => new User(data).save(),
 }

@@ -32,7 +32,7 @@ module.exports = locations => {
       const path = `/points/${lat.toFixed(4)},${lng.toFixed(4)}`
       const points = await _fetch('https://api.weather.gov' + path)
       forecast.url = points.properties.forecast
-      //console.log('forecast.url: '+forecast.url)
+      console.log('forecast.url: '+forecast.url)
     }
     const { properties: { periods } } = await _fetch(forecast.url)
     const currentPeriod = periods[0]

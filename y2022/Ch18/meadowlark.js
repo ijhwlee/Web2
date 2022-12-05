@@ -4,7 +4,8 @@ const multiparty = require('multiparty')
 const cookieParser = require('cookie-parser')
 const expressSession = require('express-session')
 const RedisStore = require('connect-redis')(expressSession)
-const redis = require('redis')
+const Redis = require('ioredis');
+const fs = require('fs');
 const cors = require('cors')
 const csrf = require('csurf')
 
@@ -39,13 +40,14 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.use(cookieParser(credentials.cookieSecret))
-const client = redis.createClient({
+
+const client = new Redis({
     host: credentials.redis[app.get('env')].host,
     port: credentials.redis[app.get('env')].port,
-    password: credentials.redis[app.get('env')].password,
-    logErrors: true,
-  });
-  
+    password: credentials.redis[app.get('env')].password
+});
+//client.auth(credentials.redis[app.get('env')].password);
+
 app.use(expressSession({
     resave: false,
     saveUninitialized: false,
@@ -128,8 +130,9 @@ app.get('/set-currency/:currency', handlers.setCurrency)
 const db = require('./db')
 
 // api
-const vhost = require('vhost')
-app.get('/', vhost('api.*', handlers.getVacationsApi))
+// const vhost = require('vhost')
+// app.get('/', vhost('api.*', handlers.getVacationsApi))
+app.get('/', handlers.home)
 app.get('/api/vacations', handlers.getVacationsApi)
 app.get('/api/vacation/:sku', handlers.getVacationBySkuApi)
 app.post('/api/vacation/:sku/notify-when-in-season', handlers.addVacationInSeasonListenerApi)
@@ -171,10 +174,12 @@ app.get('/unauthorized', (req, res) => {
   res.status(403).render('unauthorized')
 })
 // and a way to logout
-app.get('/logout', (req, res) => {
-  req.logout()
-  res.redirect('/')
-})
+app.get('/logout', (req, res, next) => {
+  req.logout(function(err) {
+    if (err) { return next(err); }
+    res.redirect('/');
+    })
+  })
 
 const twitterClient = createTwitterClient(credentials.twitter)
 
@@ -209,7 +214,8 @@ app.get('/vacations-map', async (req, res) => {
 })
 
 const getForecasts = require('./lib/weather')([
-  { name: 'Portland', coordinates: { lat: 45.5154586, lng: -122.6793461 } }
+  { name: 'Portland', coordinates: { lat: 45.5154586, lng: -122.6793461 } },
+  { name: 'Unknown', coordinates: { lat: 44.5154586, lng: -120.6793461 } }
 ])
 getForecasts().then(forecasts => console.log(forecasts))
 
