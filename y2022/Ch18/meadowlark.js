@@ -169,6 +169,10 @@ app.get('/sales', employeeOnly, (req, res) => {
   res.render('sales')
 })
 
+// login routes
+app.get('/login', (req, res) => {
+  res.redirect('/unauthorized')
+})
 // we also need an 'unauthorized' page
 app.get('/unauthorized', (req, res) => {
   res.status(403).render('unauthorized')
