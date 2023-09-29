@@ -4,6 +4,7 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = process.env.PORT || 3000
 const handlers = require('./lib/handlers')
+const tours = require('./lib/tours.js')
 
 //핸들바 뷰 엔진 설정
 app.engine('handlebars', expresshandlebars.engine({
@@ -36,6 +37,33 @@ app.get('/thanks', (req,res)=>{
     console.log("Thanks called")
     res.end()
 })
+
+app.get('/api/tours', (req, res) => res.json(tours.tours))
+app.get('/api/tours/find/:id', (req, res) => {
+    console.log(req.params.id)
+    const p = tours.tours.find(p => p.id === parseInt(req.params.id))
+    if(!p) return res.status(404).json({error: '해당하는 여행 상품이 없습니다.'})
+    if(req.body.name) p.name = req.body.name
+    if(req.body.price) p.price = req.body.price
+    res.json({success: true, name: p.name})
+})
+app.put('/api/tours/:id', (req, res) => {
+    console.log(req.params.id)
+    const p = tours.tours.find(p => p.id === parseInt(req.params.id))
+    if(!p) return res.status(404).json({error: '해당하는 여행 상품이 없습니다.'})
+    if(req.body.name) p.name = req.body.name
+    if(req.body.price) p.price = req.body.price
+    res.json({success: true, name: p.name})
+})
+app.delete('/api/tours/:id', (req, res) => {
+    console.log(req.params.id)
+    const p = tours.tours.find(p => p.id === parseInt(req.params.id))
+    if(!p) return res.status(404).json({error: '해당하는 여행 상품이 없습니다.'})
+    if(req.body.name) p.name = req.body.name
+    if(req.body.price) p.price = req.body.price
+    res.json({success: true, name: p.name})
+})
+app.get('/api/toursFmt', handlers.tours)
 
 // custom 404 page
 app.use(handlers.notFound)
