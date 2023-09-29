@@ -11,14 +11,14 @@ app.set('view engine', 'handlebars')
 
 app.use(express.static(__dirname + '/public'))
 
-app.get('/', handlers.home)
+app.get('/', (req, res) => {res.render('home')})
 app.get('/about', (req, res) => {
     res.render('about')
 })
 // custom 404 page
-app.use(handlers.notFound)
+app.use((req, res) => {res.render('404')})
 //custom 500 page
-app.use(handlers.serverError)
+app.use((req, res) => {res.render('500')})
 
 app.listen(port, ()=> console.log(
     `Express started on http://localhost:${port}; `+
