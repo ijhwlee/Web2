@@ -57,11 +57,10 @@ app.put('/api/tours/:id', (req, res) => {
 })
 app.delete('/api/tours/:id', (req, res) => {
     console.log(req.params.id)
-    const p = tours.tours.find(p => p.id === parseInt(req.params.id))
-    if(!p) return res.status(404).json({error: '해당하는 여행 상품이 없습니다.'})
-    if(req.body.name) p.name = req.body.name
-    if(req.body.price) p.price = req.body.price
-    res.json({success: true, name: p.name})
+    const idx = tours.tours.findIndex(tour => tour.id === parseInt(req.params.id))
+    if(idx < 0) return res.status(404).json({error: '해당하는 여행 상품이 없습니다.'})
+    trours.tours.splice(idx, 1)
+    res.json({success: true, name: tour.name})
 })
 app.get('/api/toursFmt', handlers.tours)
 
