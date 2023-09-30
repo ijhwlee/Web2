@@ -1,8 +1,8 @@
 {
-  "name": "chap07_01",
+  "name": "chap07",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "chap07.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
