@@ -1,4 +1,4 @@
-'use strict';
+st file'use strict';
 var debug = require('debug')('my express app');
 var express = require('express');
 var path = require('path');
