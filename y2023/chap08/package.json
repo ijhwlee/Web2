@@ -1,0 +1,19 @@
+{
+  "name": "ch08",
+  "version": "1.0.0",
+  "description": "",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hwlee",
+  "license": "ISC",
+  "dependencies": {
+    "ajax": "^0.0.4",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "jquery": "^3.6.1",
+    "multiparty": "^4.2.3",
+    "popper": "^1.0.1"
+  }
+}
