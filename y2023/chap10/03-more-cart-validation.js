@@ -26,10 +26,12 @@ app.engine('handlebars', expressHandlebars.engine({
 app.set('view engine', 'handlebars')
 
 const products = [
-  { id: 'hPc8YUbFuZM9edw4DaxwHk', name: 'Rock Climbing Expedition in Bend', price: 239.95, requiresWaiver: true },
-  { id: 'eyryDtCCu9UUcqe9XgjbRk', name: 'Walking Tour of Portland', price: 89.95 },
-  { id: '6oC1Akf6EbcxWZXHQYNFwx', name: 'Manzanita Surf Expedition', price: 159.95, maxGuests: 4 },
-  { id: 'w6wTWMx39zcBiTdpM9w5J7', name: 'Wine Tasting in the Willamette Valley', price: 229.95 },
+    { id: 'TRAVEL0001', name: 'Rock Climbing Expedition in Bend', price: 239.95, requiresWaiver: true },
+    { id: 'TRAVEL0006', name: 'Walking Tour of Portland', price: 89.95 },
+    { id: 'TRAVEL0002', name: 'Manzanita Surf Expedition', price: 159.95, maxGuests: 4 },
+    { id: 'TRAVEL0012', name: 'Wine Tasting in the Willamette Valley', price: 229.95 },
+    { id: 'TRAVEL003', name: '김수로왕릉', price: 22.95, maxGuests: 3 },
+    { id: 'TRAVEL004', name: '분성산성', price: 22.95 },
 ]
 const productsById = products.reduce((byId, p) => Object.assign(byId, { [p.id]: p }), {})
 
