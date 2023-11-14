@@ -11,8 +11,8 @@ const VALID_EMAIL_REGEX = new RegExp('^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+@' +
 const mailTransport = nodemailer.createTransport({
     host: 'smtp.sendgrid.net',
     auth: {
-      user: credentials.sendgrid.user,
-      pass: credentials.sendgrid.password,
+      user: credentials.sendgrid3.user,
+      pass: credentials.sendgrid3.password,
     },
   })
   
