@@ -10,6 +10,7 @@ if(!connectionString) {
   console.error('MongoDB connection string missing!')
   process.exit(1)
 }
+console.log('Trying to connect MongoDB...')
 mongoose.connect(connectionString, { useNewUrlParser: true })
 const db = mongoose.connection
 db.on('error', err => {
