@@ -20,40 +20,40 @@ db.once('open', () => console.log('MongoDB connection established'))
 
 // seed vacation data (if necessary)
 const Vacation = require('./models/vacation.js')
-Vacation.find((err, vacations) => {
-  if(err) return cosole.error(err)
-  if(vacations.length) return
+Vacation.find()
+  .then((vacations) => {
+    if(vacations.length) return
 
-  new Vacation({
-    name: 'Hood River Day Trip',
-    slug: 'hood-river-day-trip',
-    category: 'Day Trip',
-    sku: 'HR199',
-    description: 'Spend a day sailing on the Columbia and ' + 
-      'enjoying craft beers in Hood River!',
-    price: 99.95,
-    tags: ['day trip', 'hood river', 'sailing', 'windsurfing', 'breweries'],
-    inSeason: true,
-    maximumGuests: 16,
-    available: true,
-    packagesSold: 0,
-  }).save()
+    new Vacation({
+      name: 'Hood River Day Trip',
+      slug: 'hood-river-day-trip',
+      category: 'Day Trip',
+      sku: 'HR199',
+      description: 'Spend a day sailing on the Columbia and ' + 
+        'enjoying craft beers in Hood River!',
+      price: 99.95,
+      tags: ['day trip', 'hood river', 'sailing', 'windsurfing', 'breweries'],
+      inSeason: true,
+      maximumGuests: 16,
+      available: true,
+      packagesSold: 0,
+    }).save()
 
-  new Vacation({
-    name: 'Oregon Coast Getaway',
-    slug: 'oregon-coast-getaway',
-    category: 'Weekend Getaway',
-    sku: 'OC39',
-    description: 'Enjoy the ocean air and quaint coastal towns!',
-    price: 269.95,
-    tags: ['weekend getaway', 'oregon coast', 'beachcombing'],
-    inSeason: false,
-    maximumGuests: 8,
-    available: true,
-    packagesSold: 0,
-  }).save()
+    new Vacation({
+      name: 'Oregon Coast Getaway',
+      slug: 'oregon-coast-getaway',
+      category: 'Weekend Getaway',
+      sku: 'OC39',
+      description: 'Enjoy the ocean air and quaint coastal towns!',
+      price: 269.95,
+      tags: ['weekend getaway', 'oregon coast', 'beachcombing'],
+      inSeason: false,
+      maximumGuests: 8,
+      available: true,
+      packagesSold: 0,
+    }).save()
 
-  new Vacation({
+    new Vacation({
       name: 'Rock Climbing in Bend',
       slug: 'rock-climbing-in-bend',
       category: 'Adventure',
@@ -67,8 +67,11 @@ Vacation.find((err, vacations) => {
       available: false,
       packagesSold: 0,
       notes: 'The tour guide is currently recovering from a skiing accident.',
-  }).save()
-})
+    }).save()
+  })
+  .catch((err) => {
+    return console.error(err)
+  })
 
 const VacationInSeasonListener = require('./models/vacationInSeasonListener')
 const Attraction = require('./models/attraction')
